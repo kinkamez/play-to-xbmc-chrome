@@ -892,8 +892,74 @@ var ZdfMediathekModule = {
         callback('plugin://plugin.video.zdf_de_lite/?mode=playVideo&url=' + encodeURIComponent(videoId));
     }
 };
+var VidozaModule = {
+  canHandleUrl: function (url) {
+    var validPatterns = ["^https?://(www\\.)?vidoza\\.net/"];
+    return urlMatchesOneOfPatterns(url, validPatterns);
+  },
+  getMediaType: function () {
+    return "video";
+  },
+  getPluginPath: function (url, getAddOnVersion, callback) {
+    chrome.tabs.sendMessage(
+      currentTabId,
+      { action: "getVideoSrc" },
+      function (response) {
+        if (response) {
+          callback(response.videoSrc);
+        }
+      }
+    );
+  },
+};
+
+var HighloadModule = {
+  canHandleUrl: function (url) {
+    var validPatterns = ["^https?://(www\\.)?highload\\.to/"];
+    return urlMatchesOneOfPatterns(url, validPatterns);
+  },
+  getMediaType: function () {
+    return "video";
+  },
+  getPluginPath: function (url, getAddOnVersion, callback) {
+    chrome.tabs.sendMessage(
+      currentTabId,
+      { action: "getVideoSrc" },
+      function (response) {
+        if (response) {
+          callback(response.videoSrc);
+        }
+      }
+    );
+  },
+};
+
+var StreamzModule = {
+  canHandleUrl: function (url) {
+    var validPatterns = ["^https?://(www\\.)?streamz\\.ws/"];
+    return urlMatchesOneOfPatterns(url, validPatterns);
+  },
+  getMediaType: function () {
+    return "video";
+  },
+  getPluginPath: function (url, getAddOnVersion, callback) {
+    chrome.tabs.sendMessage(
+      currentTabId,
+      { action: "getVideoSrc" },
+      function (response) {
+        if (response) {
+          callback(response.videoSrc);
+        }
+      }
+    );
+  },
+};
+
 
 var allModules = [
+    VidozaModule,
+    StreamzModule,
+    HighloadModule,
     AcestreamModule,
     AnimeLabModule,
     ArdMediaThekModule,

@@ -89,6 +89,15 @@
     }, {
         "matches": ["*://*.pornhub.com/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/pornhub-content-scripts.js"]
+    }, {
+        "matches": ["*://vidoza.net/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/vidoza-content-scripts.js"]
+    }, {
+        "matches": ["*://streamz.ws/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/streamz-content-scripts.js"]
+     }, {
+        "matches": ["*://highload.to/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/highload-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"
